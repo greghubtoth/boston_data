@@ -1,0 +1,45 @@
+
+
+
+{% block body %}
+
+<body>
+ <form>
+    <h4><label for="rm">No of Rooms per Dwelling</label></h4>
+    <input type="number" step="any" min="5.6" max="7.8" value=5.7 class="form-control" placeholder = "RM" name="RM" value="{{request.form.rm}}">
+
+    <h4><label for="rm">Nitric Oxide</label></h4>
+    <input type="number" step="any" min="0.38" max="0.9" value=0.38 class="form-control" placeholder = "NOX" name="NOX" value="{{request.form.nox}}">
+
+    <h4><label for="rm">Percentage lower status population</label></h4>
+    <input type="number" step="any" min="3.9" max="27" value=3.9 class="form-control" placeholder = "LSTAT" name="LSTAT" value="{{request.form.lstat}}">
+
+    <h4><label for="rm">Per capita Crime rate</label></h4>
+    <input type="number" step="any" min="-0.1" max="65" value=1 class="form-control" placeholder = "CRIM" name="CRIM" value="{{request.form.crim}}">
+
+    <h4><label for="rm">Pupil-Teacher ratio</label></h4>
+    <input type="number" step="any" min="13" max="22" value=13 class="form-control" placeholder = "PTRATIO" name="PTRATIO" value="{{request.form.ptratio}}">
+    <br>
+    <br>
+    <h4>Submit all the above values; The more you fill the more you get back!</h4>
+    <input class="btn btn-default" type="submit" value="Submit">
+
+    <h4>Statistics Return:</h4>
+        <p>{{Result}}</p>
+
+    {% if pageType == "submitted" %}
+        <h4>Statistics Return:</h4>
+        <p>{{Result}}±{{Sdev}}</p>
+    {% endif %}
+
+
+</form>
+
+
+
+
+
+
+
+
+{% endblock %}
