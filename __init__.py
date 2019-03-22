@@ -48,52 +48,51 @@ def method_not_found(e):
     return render_template("405.html")
 
 
+# @app.route('/calculate/', methods=["GET","POST"])
+# def calculate_page():
+#     result = ""
+#     sdev = ""
+
+#     try:
+#         if request.method == "POST":
+
+#             attempted_nox = request.form['nox']
+#             attempted_rm = request.form['rm']
+#             attempted_lstat = request.form['lstat']
+#             attempted_crim = request.form['crim']
+#             attempted_ptratio = request.form['ptratio']
+
+
+
+#             if attempted_nox != 0:
+#                 return redirect(url_for('about'))
+
+
+#             else:
+#                 pageType="submitted"
+
+#                 # attempted_lstat = round(lstat_approx(float(attempted_lstat)),2)
+#                 # attempted_rm = round(rm_approx(float(attempted_rm)),2)
+#                 # attempted_nox = round(nox_approx(float(attempted_nox)),2)
+#                 # attempted_crim = round(crim_approx(float(attempted_crim)),2)
+#                 # attempted_ptratio = round(ptratio_approx(float(attempted_ptratio)),2)
+
+#                 # price, std = wing_it(attempted_lstat, attempted_rm, attempted_nox, attempted_crim, attempted_ptratio)
+
+
+#                 result = str(attempted_ptratio)
+#                 sdev = str(attempted_ptratio)
+
+
+#         return render_template("calculate.html", result = result, sdev=sdev )
+
+#     except Exception as e:
+
+#         return render_template("calculate.html", result = result, sdev= sdev)
+
+
+
 @app.route('/calculate/', methods=["GET","POST"])
-def calculate_page():
-    Result = 0
-    try:
-        if request.method == "POST":
-
-            attempted_nox = request.form['nox']
-            attempted_rm = request.form['rm']
-            attempted_lstat = request.form['lstat']
-            attempted_crim = request.form['lstat']
-            attempted_ptratio = request.form['lstat']
-
-
-
-
-
-
-
-            if attempted_ptratio==12:
-                return redirect(url_for('about'))
-
-
-            else:
-                pageType="submitted"
-
-                attempted_lstat = round(lstat_approx(float(attempted_lstat)),2)
-                attempted_rm = round(rm_approx(float(attempted_rm)),2)
-                attempted_nox = round(nox_approx(float(attempted_nox)),2)
-                attempted_crim = round(crim_approx(float(attempted_crim)),2)
-                attempted_ptratio = round(ptratio_approx(float(attempted_ptratio)),2)
-
-                price, std = wing_it(attempted_lstat, attempted_rm, attempted_nox, attempted_crim, attempted_ptratio)
-
-
-            price = str(price)
-
-
-        return render_template("calculate.html" )
-
-    except Exception as e:
-
-        return render_template("calculate.html", Result = price, Sdev= std, pageType = pageType)
-
-
-
-@app.route('/login/', methods=["GET","POST"])
 def login_page():
 
     error = ''
@@ -101,18 +100,29 @@ def login_page():
 
         if request.method == "POST":
 
-            attempted_username = request.form['username']
-            attempted_password = request.form['password']
+            attempted_nox = request.form['nox']
+            attempted_rm = request.form['rm']
+            attempted_lstat = request.form['lstat']
+            attempted_crim = request.form['crim']
+            attempted_ptratio = request.form['ptratio']
 
+            attempted_rm = round(rm_approx(float(attempted_rm)),2)
+            attempted_lstat = round(lstat_approx(float(attempted_lstat)),2)
+            # attempted_rm = round(rm_approx(float(attempted_rm)),2)
+            attempted_nox = round(nox_approx(float(attempted_nox)),2)
+            attempted_crim = round(crim_approx(float(attempted_crim)),2)
+            attempted_ptratio = round(ptratio_approx(float(attempted_ptratio)),2)
+
+            price, std = wing_it(attempted_lstat, attempted_rm, attempted_nox, attempted_crim, attempted_ptratio)
             #flash(attempted_username)
             #flash(attempted_password)
 
-            if attempted_username == "admin" and attempted_password == "password":
-                return redirect(url_for('dashboard'))
+            if attempted_nox == "admin" and attempted_rm == "password":
+                return redirect(url_for('about'))
 
             else:
-                error = "Invalid credentials. Try Again."
-
+                error = str(attempted_rm)+" "+str(attempted_lstat)+" "+str(attempted_nox)+" "+str(attempted_crim)+" "+str(attempted_ptratio)
+                error = str(round(price,2))+"  and error in sd  "+str(round(std,2))
         return render_template("login.html", error = error)
 
     except Exception as e:
