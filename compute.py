@@ -19,8 +19,8 @@ def nox_approx(x):
     return y
 
 def crim_approx(x):
-    p = poly1d([ 8.88633374e-03, -9.33071702e-01,  2.84849955e+01])
-    y = 1.65*p(x)
+    p = poly1d([ 1.29193276e-02, -1.17231212e+00,  3.02121379e+01])
+    y = p(x)
     return y
 
 def rm_approx(x):
