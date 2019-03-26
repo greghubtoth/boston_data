@@ -29,8 +29,15 @@ def rm_approx(x):
     return y
 
 def ptratio_approx(x):
-    p = poly1d([  0.26609764, -11.97890043, 153.01549492])
+    # X and Y are preprocessed according MaxAbsScale from sklearn thus the transformations.
+    # By construct values are simply manipulated into format.
+    
+    max_of_ptratio = 22
+    max_of_target = 50
+    x = x / max_of_ptratio
+    p = poly1d([-19.47162973,  30.06587534, -10.9131322 ])
     y = p(x)
+    y  = y * max_of_target
     return y
 
 
