@@ -60,6 +60,7 @@ def method_not_found(e):
 #             attempted_rm = request.form['rm']
 #             attempted_lstat = request.form['lstat']
 #             attempted_crim = request.form['crim']
+     
 #             attempted_ptratio = request.form['ptratio']
 
 
@@ -105,15 +106,16 @@ def login_page():
             attempted_lstat = request.form['lstat']
             attempted_crim = request.form['crim']
             attempted_ptratio = request.form['ptratio']
+            attempted_b = request.form['b']
 
             attempted_rm = round(rm_approx(float(attempted_rm)),2)
             attempted_lstat = round(lstat_approx(float(attempted_lstat)),2)
-            # attempted_rm = round(rm_approx(float(attempted_rm)),2)
+            attempted_b = round(b_approx(float(attempted_b)),2)
             attempted_nox = round(nox_approx(float(attempted_nox)),2)
             attempted_crim = round(crim_approx(float(attempted_crim)),2)
             attempted_ptratio = round(ptratio_approx(float(attempted_ptratio)),2)
 
-            price, std = wing_it(attempted_lstat, attempted_rm, attempted_nox, attempted_crim, attempted_ptratio)
+            price, std = wing_it(attempted_lstat, attempted_rm, attempted_nox, attempted_b, attempted_ptratio)
             #flash(attempted_username)
             #flash(attempted_password)
 
