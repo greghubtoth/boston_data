@@ -2,7 +2,7 @@
 # A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask, render_template,  request, url_for, redirect
-from compute import lstat_approx,nox_approx,crim_approx,ptratio_approx,rm_approx, wing_it
+from compute import lstat_approx,nox_approx,crim_approx,ptratio_approx,rm_approx, wing_it, b_approx
 # ,url_for, flash, redirect
 
 app = Flask(__name__)
@@ -115,7 +115,7 @@ def login_page():
             attempted_crim = round(crim_approx(float(attempted_crim)),2)
             attempted_ptratio = round(ptratio_approx(float(attempted_ptratio)),2)
 
-            price, std = wing_it(attempted_lstat, attempted_rm, attempted_nox, attempted_b, attempted_ptratio)
+            price, std = wing_it(attempted_lstat, attempted_rm, attempted_nox, attempted_b, attempted_ptratio, attempted_b)
             #flash(attempted_username)
             #flash(attempted_password)
 
