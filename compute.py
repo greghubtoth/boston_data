@@ -40,11 +40,20 @@ def ptratio_approx(x):
     y  = y * max_of_target
     return y
 
+def b_approx(x):
+    max_of_b = 396.9
+    max_of_target = 50
+    x = x / max_of_b
+    p = poly1d([ 0.36552385, -0.07636354,  0.25751557])
+    y = p(x)
+    y  = y * max_of_target
+    return y
 
-def wing_it(a,b,c,d,e):
+
+
+def wing_it(a, b, c, d, e):
     prices = [a, b, c, d, e]
     ave_prices = mean(prices)
-
     uncertainty = std(prices)
 
     return ave_prices, uncertainty
