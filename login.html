@@ -16,8 +16,11 @@
             <h4><label for="crim">Per capita Crime rate range is 0 - 60 </label></h4>
             <input type="number" step="any" min="0" max="60" class="form-control" placeholder = "pc Crime rate per town" name="crim" value="{{request.form.crim}}">
              <h4><label for="ptratio">Pupil-Teacher ratio 14.3 - 20.24 </label></h4>
-            <input type="number" step="any" min="14.3" max="20.24" class="form-control" placeholder = "Pupil-Teacher ratio " name="ptratio" value="{{request.form.ptratio}}">
-            <input class="btn btn-default" type="submit" value="Submit">
+            <input type="number" step="any" min="13" max="22" class="form-control" placeholder = "Pupil-Teacher ratio " name="ptratio" value="{{request.form.ptratio}}">
+            
+             <h4><label for="b">B Value 0.3 - 396 </label></h4>
+            <input type="number" step="any" min="0.3" max="396" class="form-control" placeholder = "B Value " name="b" value="{{request.form.b}}">
+           <input class="btn btn-default" type="submit" value="Submit">
 
         </form>
 
